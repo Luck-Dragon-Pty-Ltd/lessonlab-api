@@ -1,0 +1,7 @@
+name = "lessonlab-api"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_id = "295203f9-1f60-43f0-91f2-a6fd6b55d069"
