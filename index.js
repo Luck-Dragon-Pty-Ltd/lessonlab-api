@@ -702,7 +702,7 @@ Return ONLY this JSON:
           return err2("Invalid checkout type");
         }
         if (!priceId) return err2("Stripe price not configured for this item", 500);
-        const sessionParams = { "mode": mode, "payment_method_types[]": "card", ...user.stripe_customer_id ? { "customer": user.stripe_customer_id } : { "customer_email": user.email }, "line_items[0][price]": priceId, "line_items[0][quantity]": "1", "allow_promotion_codes": "true", "success_url": `${appUrl}?upgrade=success&type=${type}`, "cancel_url": `${appUrl}?upgrade=cancelled` };
+        const sessionParams = { "mode": mode, "payment_method_types[]": "card", ...user.stripe_customer_id ? { "customer": user.stripe_customer_id } : { "customer_email": user.email }, "line_items[0][price]": priceId, "line_items[0][quantity]": "1", "allow_promotion_codes": "true", "automatic_tax[enabled]": "true", "success_url": `${appUrl}?upgrade=success&type=${type}`, "cancel_url": `${appUrl}?upgrade=cancelled` };
         Object.entries(metadata).forEach(([k, v]) => {
           sessionParams[`metadata[${k}]`] = v;
         });
