@@ -291,7 +291,7 @@ var worker_default = {
     }
     try {
       if (path === "/auth/signup" && method === "POST") {
-        const { email, password, display_name, school_name } = await request.json();
+        const { email, password, display_name, school_name = null } = await request.json();
         if (!email || !password) return err2("Email and password required");
         const emailClean = email.trim().toLowerCase();
         if (password.length < 6) return err2("Password must be at least 6 characters");
