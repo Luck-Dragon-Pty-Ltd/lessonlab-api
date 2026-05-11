@@ -1,22 +1,17 @@
 name: Deploy to Cloudflare Workers
-
 on:
   push:
       branches:
             - main
-              workflow_dispatch:
-
-              jobs:
-                deploy:
-                    runs-on: ubuntu-latest
-                        steps:
-                              - uses: actions/checkout@v4
-
-                                          - name: Install dependencies
-                                                  run: npm install
-
-                                                              - name: Deploy to Cloudflare Workers
-                                                                      run: npx wrangler deploy
-                                                                              env:
-                                                                                        CLOUDFLARE_API_TOKEN: ${{ secrets.CUSTOM_JV_TOKEN }}
-                                                                                                  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CUSTOM_JV_ACCOUNT_ID }}
+            jobs:
+              deploy:
+                  runs-on: ubuntu-latest
+                      steps:
+                            - uses: actions/checkout@v4
+                                  - name: Install dependencies
+                                          run: npm install
+                                                - name: Deploy to Cloudflare
+                                                        run: npx wrangler deploy
+                                                                env:
+                                                                          CLOUDFLARE_API_TOKEN: ${{ secrets.CUSTOM_JV_TOKEN }}
+                                                                                    CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CUSTOM_JV_ACCOUNT_ID }}
